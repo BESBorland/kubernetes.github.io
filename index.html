@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>BES.Kubernetes.GitHub.io by BESBorland</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">BES.Kubernetes.GitHub.io</h1>
+      <h2 class="project-tagline">Website/documentation repo</h2>
+      <a href="https://github.com/BESBorland/kubernetes.github.io" class="btn">View on GitHub</a>
+      <a href="https://github.com/BESBorland/kubernetes.github.io/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/BESBorland/kubernetes.github.io/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="instructions-for-contributing-to-the-docswebsite" class="anchor" href="#instructions-for-contributing-to-the-docswebsite" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instructions for Contributing to the Docs/Website</h2>
+
+<p>Welcome! We are very pleased you want to contribute to the documentation and/or website for Kubernetes.</p>
+
+<p>You can click the "Fork" button in the upper-right area of the screen to create a copy of our site on your GitHub account called a "fork." Make any changes you want in your fork, and when you are ready to send those changes to us, go to the index page for your fork and click "New Pull Request" to let us know about it.</p>
+
+<p>If you want to see your changes staged without having to install anything locally, remove the CNAME file in this directory and
+change the name of the fork to be:</p>
+
+<pre><code>YOUR_GITHUB_USERNAME.github.io
+</code></pre>
+
+<p>Then, visit: <a href="http://YOUR_GITHUB_USERNAME.github.io">http://YOUR_GITHUB_USERNAME.github.io</a></p>
+
+<p>You should see a special-to-you version of the site. </p>
+
+<h2>
+<a id="editingstaging-the-site-locally" class="anchor" href="#editingstaging-the-site-locally" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Editing/staging the site locally</h2>
+
+<p>If you have files to upload, or just want to work offline, run the below commands to setup
+your environment for running GitHub pages locally. Then, any edits you make will be viewable
+on a lightweight webserver that runs on your local machine.</p>
+
+<p>First install rvm</p>
+
+<pre><code>curl -sSL https://get.rvm.io | bash -s stable
+</code></pre>
+
+<p>Then load it into your environment</p>
+
+<pre><code>source ${HOME}/.rvm/scripts/rvm (or whatever is prompted by the installer)
+</code></pre>
+
+<p>Then install Ruby 2.2 or higher</p>
+
+<pre><code>rvm install ruby-2.2.4
+rvm use ruby-2.2.4 --default
+</code></pre>
+
+<p>Verify that this new version is running (optional)</p>
+
+<pre><code>which ruby
+ruby -v
+</code></pre>
+
+<p>Install the GitHub Pages package, which includes Jekyll</p>
+
+<pre><code>gem install github-pages
+</code></pre>
+
+<p>Clone our site</p>
+
+<pre><code>git clone https://github.com/kubernetes/kubernetes.github.io.git
+</code></pre>
+
+<p>Make any changes you want. Then, to see your changes locally:</p>
+
+<pre><code>cd kubernetes.github.io
+jekyll serve
+</code></pre>
+
+<p>Your copy of the site will then be viewable at: <a href="http://localhost:4000">http://localhost:4000</a>
+(or wherever Ruby tells you).</p>
+
+<p>If you're a bit rusty with git/GitHub, you might wanna read
+<a href="http://readwrite.com/2013/10/02/github-for-beginners-part-2">this</a> for a refresher.</p>
+
+<p>The above instructions work on Mac and Linux.
+<a href="https://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/">These instructions </a>
+might help for Windows users. </p>
+
+<h2>
+<a id="common-tasks" class="anchor" href="#common-tasks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Common Tasks</h2>
+
+<h3>
+<a id="edit-page-titles-or-change-the-left-navigation" class="anchor" href="#edit-page-titles-or-change-the-left-navigation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Edit Page Titles or Change the Left Navigation</h3>
+
+<p>Edit the yaml files in <code>/_data/</code> for the Guides, Reference, Samples, or Support areas. </p>
+
+<p>You may have to exit and <code>jekyll clean</code> before restarting the <code>jekyll serve</code> to
+get changes to files in <code>/_data/</code> to show up.</p>
+
+<h3>
+<a id="add-images" class="anchor" href="#add-images" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Images</h3>
+
+<p>Put the new image in <code>/images/docs/</code> if it's for the documentation, and just <code>/images/</code> if it's for the website.</p>
+
+<p><strong>For diagrams, we greatly prefer SVG files!</strong></p>
+
+<h3>
+<a id="include-code-from-another-file" class="anchor" href="#include-code-from-another-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Include code from another file</h3>
+
+<p>To include a file that is hosted on this GitHub repo, insert this code:</p>
+
+<pre>{% include code.html language="&lt;LEXERVALUE&gt;" file="&lt;RELATIVEPATH&gt;" ghlink="&lt;PATHFROMROOT&gt;" %}</pre>
+
+<ul>
+<li>
+<code>LEXERVALUE</code>: The language in which the file was written; must be <a href="https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers">a value supported by Rouge</a>.</li>
+<li>
+<code>RELATIVEPATH</code>: The path to the file you're including, relative to the current file.</li>
+<li>
+<code>PATHFROMROOT</code>: The path to the file relative to root, e.g. <code>/docs/admin/foo.yaml</code>
+</li>
+</ul>
+
+<p>To include a file that is hosted in the external, main Kubernetes repo, make sure it's added to <a href="https://github.com/kubernetes/kubernetes.github.io/blob/master/update-imported-docs.sh">/update-imported-docs.sh</a>, and run it so that the file gets downloaded, then enter:</p>
+
+<pre>{% include code.html language="&lt;LEXERVALUE&gt;" file="&lt;RELATIVEPATH&gt;" k8slink="&lt;PATHFROMK8SROOT&gt;" %}</pre>
+
+<ul>
+<li>
+<code>PATHFROMK8SROOT</code>: The path to the file relative to the root of <a href="https://github.com/kubernetes/kubernetes/tree/release-1.2">the Kubernetes repo</a>, e.g. <code>/examples/rbd/foo.yaml</code>
+</li>
+</ul>
+
+<h2>
+<a id="using-tabs-for-multi-language-examples" class="anchor" href="#using-tabs-for-multi-language-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using tabs for multi-language examples</h2>
+
+<p>By specifying some inline CSV in a varable called <code>tabspec</code>, you can include a file
+called <code>tabs.html</code> that generates tabs showing code examples in multiple langauges.</p>
+
+<pre>{% capture tabspec %}servicesample
+JSON,json,service-sample.json,/docs/user-guide/services/service-sample.json
+YAML,yaml,service-sample.yaml,/docs/user-guide/services/service-sample.yaml{% endcapture %}
+{% include tabs.html %}</pre>
+
+<p>In English, this would read: "Create a set of tabs with the alias <code>servicesample</code>,
+and have tabs visually labeled "JSON" and "YAML" that use <code>json</code> and <code>yaml</code> Rouge syntax highlighting, which display the contents of
+<code>service-sample.{extension}</code> on the page, and link to the file in GitHub at (full path)."</p>
+
+<p>Example file: <a href="/docs/user-guide/pods/multi-container/">Pods: Multi-Container</a>.</p>
+
+<h2>
+<a id="use-a-global-variable" class="anchor" href="#use-a-global-variable" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use a global variable</h2>
+
+<p>The <code>/_config.yml</code> file defines some useful variables you can use when editing docs. </p>
+
+<ul>
+<li>
+<code>page.githubbranch</code>: The name of the GitHub branch on the Kubernetes repo that is associated with this branch of the docs. e.g. <code>release-1.2</code>
+</li>
+<li>
+<code>page.version</code> The version of Kubernetes associated with this branch of the docs. e.g. <code>v1.2</code>
+</li>
+<li>
+<code>page.docsbranch</code> The name of the GitHub branch on the Docs/Website repo that you are currently using. e.g. <code>release-1.1</code> or <code>master</code>
+</li>
+</ul>
+
+<p>This keeps the docs you're editing aligned with the Kubernetes version you're talking about. For example, if you define a link like so, you'll never have to worry about it going stale in future doc branches:</p>
+
+<pre>View the README [here](http://releases.k8s.io/{{page.githubbranch}}/cluster/addons/README.md).</pre>
+
+<p>That, of course, will send users to:</p>
+
+<p><a href="http://releases.k8s.io/release-1.2/cluster/addons/README.md">http://releases.k8s.io/release-1.2/cluster/addons/README.md</a></p>
+
+<p>(Or whatever Kubernetes release that docs branch is associated with.)</p>
+
+<h2>
+<a id="branch-structure" class="anchor" href="#branch-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Branch structure</h2>
+
+<p>The current version of the website is served out of the <code>master</code> branch.</p>
+
+<p>All versions of the site that relate to past and future versions will be named after their Kubernetes release number. For example, <a href="https://github.com/kubernetes/kubernetes.github.io/tree/release-1.1">the old branch for the 1.1 docs is called <code>release-1.1</code></a>.</p>
+
+<h2>
+<a id="thank-you" class="anchor" href="#thank-you" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Thank you!</h2>
+
+<p>Kubernetes thrives on community participation and we really appreciate your
+contributions to our site and our documentation!</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/BESBorland/kubernetes.github.io">BES.Kubernetes.GitHub.io</a> is maintained by <a href="https://github.com/BESBorland">BESBorland</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
